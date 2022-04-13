@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Refit;
 using WebMotors.Data;
 using WebMotors.Interfaces;
-using WebMotors.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,21 +39,6 @@ void ConfigureServices(WebApplicationBuilder builder)
     builder.Services.AddDbContext<AdDataContext>(options => options.UseSqlite(connectionString));
 
     builder.Services.AddRefitClient<IExternalAdService>().ConfigureHttpClient(c =>
-    {
-        c.BaseAddress = new Uri(baseUrl);
-    });
-
-    builder.Services.AddRefitClient<IMakeRepository>().ConfigureHttpClient(c =>
-    {
-        c.BaseAddress = new Uri(baseUrl);
-    });
-
-    builder.Services.AddRefitClient<IModelRepository>().ConfigureHttpClient(c =>
-    {
-        c.BaseAddress = new Uri(baseUrl);
-    });
-
-    builder.Services.AddRefitClient<IVersionRepository>().ConfigureHttpClient(c =>
     {
         c.BaseAddress = new Uri(baseUrl);
     });
