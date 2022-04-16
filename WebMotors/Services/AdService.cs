@@ -5,7 +5,7 @@ using WebMotors.ViewModels;
 
 namespace WebMotors.Services
 {
-    public class AdService
+    public class AdService 
     {
         private readonly IExternalAdService _repository;
 
