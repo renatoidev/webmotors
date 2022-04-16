@@ -21,6 +21,9 @@ namespace WebMotors.Controllers
                 var ads = await context.Ads
                     .AsNoTracking()
                     .ToListAsync();
+                if (ads == null)
+                    return NotFound(new ResultViewModel<string>("Conteúdo não encontrado"));
+
                 return Ok(new ResultViewModel<List<Ad>>(ads));
             }
             catch (Exception ex)
